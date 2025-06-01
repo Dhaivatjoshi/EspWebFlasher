@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         { "path": "bootloader.bin", "offset": 4096 },
-        { "path": "partition-table.bin", "offset": 32768 },
+        { "path": "partition_table.bin", "offset": 32768 },
         { "path": "multiSensorHat.bin", "offset": 65536 }
       ]
     }
