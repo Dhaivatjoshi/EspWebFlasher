@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Flash ESP32</title>
-    <script type="module" src="https://unpkg.com/esp-web-tools@9.0.4/dist/web/install-button.js?module"></script>
-  </head>
-  <body>
-    <h2>Install MultiSensorHat Firmware</h2>
-    <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
-  </body>
+
+<head>
+  <meta charset=utf-8>
+  <meta name="description" content="Login">
+  <meta name="keywords" content="Updater">
+  <meta name="author" content="Cahyo Hertanto">
+  <meta name="viewport" content="width=320, initial-scale=1, user-scalable=no" />
+  <title>EspWebFlasher</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@9.0.4/dist/web/install-button.js?module"></script>
+
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 450px;
+    position: absolute;
+    border-radius: 10px;
+
+  }
+
+  .container h4 {
+    text-align: center;
+    font-size: 25px;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+  }
+
+  .text label {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    pointer-events: none;
+    font-size: 16px;
+  }
+
+
+
+  .btn {
+    outline: none;
+    display: block;
+    border: solid 1px #0081D5;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 16px 30px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #0081D5;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background: #0081D5;
+    color: #ffffff;
+  }
+
+  .btn:active {
+    background: #ffffff;
+    color: #0081D5;
+  }
+
+  form>* {
+    display: block;
+    margin-bottom: 10px
+  }
+
+
+</style>
+
+
+<body>
+  <div class="container" ;>
+    <h4> ESP32 Firmware WebFlasher </h4>
+    <form id="form" enctype="multipart/form-data" method="post" action="">
+    <!-- <input type="button" style="width:410px" class="btn" onclick="uploadFile();" value="Update" /> -->
+    <esp-web-install-button manifest="manifest.json" class="btn" ></esp-web-install-button>  
+    <br />
+      <br />
+    </div>
+  </form>
+</body>
+
 </html>
