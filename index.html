@@ -38,9 +38,16 @@
 
   .button-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    gap: 15px;
+  }
+
+  select {
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
   }
 </style>
 
@@ -49,10 +56,57 @@
     <h4>ESP32 Firmware WebFlasher</h4>
     <form id="form">
       <div class="button-wrapper">
-        <esp-web-install-button manifest="manifest.json"></esp-web-install-button>
+        <select id="projectSelect">
+          <option value="">Loading projects...</option>
+        </select>
+
+        <esp-web-install-button id="flashBtn" style="display:none;"></esp-web-install-button>
       </div>
     </form>
   </div>
+
+  <script>
+    const owner = 'Dhaivatjoshi';
+    const repo = 'EspWebFlasher';
+    const branch = 'main'; // or 'gh-pages', whichever is used for GitHub Pages
+    const projectSelect = document.getElementById('projectSelect');
+    const flashBtn = document.getElementById('flashBtn');
+
+    async function loadFolders() {
+      const url = `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      // Clear default option
+      projectSelect.innerHTML = '';
+
+      data.forEach(item => {
+        if (item.type === 'dir') {
+          const option = document.createElement('option');
+          option.value = item.name;
+          option.textContent = item.name;
+          projectSelect.appendChild(option);
+        }
+      });
+
+      // Set default manifest for first folder
+      if (projectSelect.options.length > 0) {
+        const first = projectSelect.options[0].value;
+        flashBtn.setAttribute('manifest', `${first}/manifest.json`);
+        flashBtn.style.display = 'inline-block';
+      }
+    }
+
+    projectSelect.addEventListener('change', () => {
+      const selectedFolder = projectSelect.value;
+      flashBtn.setAttribute('manifest', `${selectedFolder}/manifest.json`);
+    });
+
+    loadFolders().catch(err => {
+      console.error('Failed to load folders:', err);
+      projectSelect.innerHTML = '<option>Error loading folders</option>';
+    });
+  </script>
 </body>
 
 </html>
