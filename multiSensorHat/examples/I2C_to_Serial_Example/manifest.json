@@ -1,5 +1,5 @@
 {
-  "name": "MultiSensorHat Firmware",
+  "name": "I2C_to_Serial_Example Firmware",
   "version": "1.0.0",
   "builds": [
     {
