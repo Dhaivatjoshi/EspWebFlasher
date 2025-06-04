@@ -7,7 +7,7 @@
       "parts": [
         { "path": "build/bootloader/bootloader.bin", "offset": 4096 },
         { "path": "build/partition_table/partition_table.bin", "offset": 32768 },
-        { "path": "build/I2C.bin", "offset": 65536 }
+        { "path": "build/I2C_to_Serial_Example.bin", "offset": 65536 }
       ]
     }
   ]
