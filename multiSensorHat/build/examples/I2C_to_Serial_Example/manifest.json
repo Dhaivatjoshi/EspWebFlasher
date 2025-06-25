@@ -1,5 +1,5 @@
 {
-  "name": "MultiSensorHat Firmware",
+  "name": "I2C_to_Serial_Example Firmware",
   "version": "1.0.0",
   "builds": [
     {
@@ -7,7 +7,7 @@
       "parts": [
         { "path": "multiSensorHat/build/bootloader/bootloader.bin", "offset": 4096 },
         { "path": "multiSensorHat/build/partition_table/partition_table.bin", "offset": 32768 },
-        { "path": "multiSensorHat/build/multiSensorHat.bin", "offset": 65536 }
+        { "path": "multiSensorHat/build/I2C_to_Serial_Example.bin", "offset": 65536 }
       ]
     }
   ]
