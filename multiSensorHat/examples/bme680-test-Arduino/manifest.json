@@ -1,0 +1,27 @@
+{
+  "name": "BME680 Arduino Firmware",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "build/bme680test.ino.bootloader.bin",
+          "offset": 4096
+        },
+        {
+          "path": "build/bme680test.ino.partitions.bin",
+          "offset": 32768
+        },
+        {
+          "path": "build/boot_app0.bin",
+          "offset": 57344
+        },
+        {
+          "path": "build/bme680test.ino.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}
