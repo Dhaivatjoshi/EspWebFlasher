@@ -54,15 +54,16 @@ Firmware builds (with `manifest.json`) should follow this pattern:
 ```
 EspWebFlasher/
 ├── multiSensorHat/
-│   ├── build/
-│   │   ├── bootloader/
-│   │   ├── partition_table/
-│   │   ├── Example1/
-│   │   │   ├── firmware.bin
-│   │   │   ├── manifest.json
-│   │   ├── Example2/
-│   │   │   ├── firmware.bin
-│   │   │   ├── manifest.json
+│   └── examples/
+│       └── I2C_to_Serial_Example/
+│           ├── manifest.json          (required)
+│           └── build/
+│               ├── firmware.bin       (built binary)
+│               ├── bootloader/
+│               │   └── bootloader.bin
+│               └── partition_table/
+│                   └── partition-table.bin
+
 ```
 
 The site scans:
