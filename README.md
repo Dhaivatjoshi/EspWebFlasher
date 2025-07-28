@@ -10,17 +10,17 @@ This tool allows users to **select from multiple firmware projects**, then flash
 ## 📚 Table of Contents
 
 * [⚡ ESP Web Flasher](#-esp-web-flasher)
-* [🌐 How It Works](#-how-it-works)
-* [🛠 How to Use](#-how-to-use)
-* [📁 Repo Structure](#-repo-structure)
-* [📄 Creating manifest.json](#-creating-manifestjson)
+* [How It Works](#-how-it-works)
+* [How to Use](#-how-to-use)
+* [Repo Structure](#-repo-structure)
+* [Creating manifest.json](#-creating-manifestjson)
 
   * [Structure of manifest.json](#structure-of-manifestjson)
   * [Where to place manifest.json](#where-to-place-manifestjson)
-* [🧠 Technologies Used](#-technologies-used)
-* [📦 Hosting](#-hosting)
-* [🔐 Security Notes](#-security-notes)
-* [📢 License](#-license)
+* [Technologies Used](#-technologies-used)
+* [Hosting](#-hosting)
+* [Security Notes](#-security-notes)
+* [License](#-license)
 
 ---
 
@@ -157,20 +157,20 @@ EspWebFlasher/
 │               │   └── bootloader.bin
 │               ├── partition_table/
 │               │   └── partition-table.bin
-│               └── manifest.json  ✅ <- goes here
+│               └── manifest.json   <- goes here
 ```
 
 📝 **Tip**: Make sure the `path` fields inside `manifest.json` correctly reference the binary files **relative to the manifest’s folder**.
 
 ---
 
-### 📦 Multiple Firmware Projects?
+###  Multiple Firmware Projects?
 
 You can create separate folders for each firmware variation (e.g. different sensor bridges or configurations), each with their own `manifest.json`. The web flasher will automatically detect and list them.
 
 ---
 
-## 🧠 Technologies Used
+## Technologies Used
 
 * [ESP Web Tools](https://github.com/esphome/esp-web-tools)
 * GitHub Pages (`gh-pages` branch or `main`)
