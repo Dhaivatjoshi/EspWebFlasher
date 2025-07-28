@@ -18,10 +18,6 @@ This tool allows users to **select from multiple firmware projects**, then flash
   * [Structure of manifest.json](#structure-of-manifestjson)
   * [Where to place manifest.json](#where-to-place-manifestjson)
 * [Technologies Used](#-technologies-used)
-* [Hosting](#-hosting)
-* [Security Notes](#-security-notes)
-* [License](#-license)
-
 ---
 
 ## 🛠 How It Works
