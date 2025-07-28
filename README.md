@@ -7,6 +7,23 @@ This tool allows users to **select from multiple firmware projects**, then flash
 
 ---
 
+## 📚 Table of Contents
+
+* [⚡ ESP Web Flasher](#-esp-web-flasher)
+* [🌐 How It Works](#-how-it-works)
+* [🛠 How to Use](#-how-to-use)
+* [📁 Repo Structure](#-repo-structure)
+* [📄 Creating manifest.json](#-creating-manifestjson)
+
+  * [Structure of manifest.json](#structure-of-manifestjson)
+  * [Where to place manifest.json](#where-to-place-manifestjson)
+* [🧠 Technologies Used](#-technologies-used)
+* [📦 Hosting](#-hosting)
+* [🔐 Security Notes](#-security-notes)
+* [📢 License](#-license)
+
+---
+
 ## 🛠 How It Works
 
 This web app automatically:
@@ -83,6 +100,73 @@ Here’s a minimal working `manifest.json` to flash ESP32:
 ```
 
 Make sure the binary files are placed correctly relative to the manifest path.
+
+---
+
+## 📄 Creating `manifest.json`
+
+To flash firmware via [ESP Web Tools](https://github.com/esphome/esp-web-tools), each firmware must include a **`manifest.json`** describing what files to flash and at what memory offsets.
+
+---
+
+### ✅ **Structure of `manifest.json`**
+
+Here is a valid example for ESP32 firmware:
+
+```json
+{
+  "name": "MultiSensorHat Firmware",
+  "version": "1.7",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "bootloader/bootloader.bin", "offset": 4096 },
+        { "path": "partition_table/partition-table.bin", "offset": 32768 },
+        { "path": "firmware.bin", "offset": 65536 }
+      ]
+    }
+  ]
+}
+```
+
+### 🔧 Explanation:
+
+| Field        | Description                                                        |
+| ------------ | ------------------------------------------------------------------ |
+| `name`       | Friendly name shown on the flasher UI.                             |
+| `version`    | Version of the firmware.                                           |
+| `chipFamily` | Must match your target chip: `ESP32`, `ESP8266`, `ESP32-C3`, etc.  |
+| `path`       | Path to each binary file relative to the `manifest.json` location. |
+| `offset`     | Flash offset in bytes. These values are typical for ESP32.         |
+
+---
+
+### 📂 **Where to place `manifest.json`**
+
+Place the `manifest.json` in the **same folder as your `.bin` files**. The expected structure looks like this:
+
+```
+EspWebFlasher/
+├── multiSensorHat/
+│   └── build/
+│       └── examples/
+│           └── I2C_to_Serial_Example/
+│               ├── firmware.bin
+│               ├── bootloader/
+│               │   └── bootloader.bin
+│               ├── partition_table/
+│               │   └── partition-table.bin
+│               └── manifest.json  ✅ <- goes here
+```
+
+📝 **Tip**: Make sure the `path` fields inside `manifest.json` correctly reference the binary files **relative to the manifest’s folder**.
+
+---
+
+### 📦 Multiple Firmware Projects?
+
+You can create separate folders for each firmware variation (e.g. different sensor bridges or configurations), each with their own `manifest.json`. The web flasher will automatically detect and list them.
 
 ---
 
